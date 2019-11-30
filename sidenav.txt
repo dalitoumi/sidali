@@ -1,0 +1,47 @@
+html {
+	<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="sidenav">
+    <button color="primary" mat-button routerLink="/sidali-customer/list">
+      Customers List
+    </button>
+  </mat-drawer>
+  <div class="sidenav-content">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+<router-outlet></router-outlet>
+</div>
+</mat-drawer-container>
+}
+css  app componenet {
+	.container {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+  }
+  
+.container .mat-drawer {
+    min-width: 200px;
+  }
+  
+.container .mat-drawer .mat-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  
+.spacer {
+    flex: 1 1 auto;
+  }
+}
+ts App Module{
+
+	import {MatButtonModule, MatIconModule, MatMenuModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+
+}
