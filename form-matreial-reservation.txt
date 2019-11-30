@@ -1,0 +1,54 @@
+html {
+	<form [formGroup]="reservationForm" (ngSubmit)="saveReservation()">
+    <mat-form-field>
+        <mat-label>Customer</mat-label>
+        <mat-select [formControl]="customer" (selectionChange)="getSelectedCustomer($event.value)">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let customer of customers" [value]="customer.id">
+                {{customer.firstName + ' ' + customer.lastName}}
+            </mat-option>
+        </mat-select>
+        <mat-error>this field is required</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Room Number</mat-label>
+        <mat-select [formControl]="roomNumber" (selectionChange)="getSelectedRoom($event.value)">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let room of rooms" [value]="room.id">
+                {{room.roomNumber}}
+            </mat-option>
+        </mat-select>
+        <mat-error>this field is required</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Begin Date" [formControl]="beginDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error>this field is required</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="End Date" [formControl]="endDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error>this field is required</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-checkbox [formControl]="containbreakFast" labelPosition="before">Contain BreakFast</mat-checkbox>
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="reservationForm.invalid">
+        save
+    </button>
+</form>
+}
+ts module {
+	import { MatButtonModule } from '@angular/material/button';
+	import { MatInputModule } from '@angular/material/input';
+	import { MatFormFieldModule } from '@angular/material/form-field';
+	import {MatSelectModule} from '@angular/material/select'; 
+	import {MatDatepickerModule} from '@angular/material/datepicker'; 
+	import { MatNativeDateModule } from '@angular/material/core';
+	import {MatCheckboxModule} from '@angular/material/checkbox'; 
+}
